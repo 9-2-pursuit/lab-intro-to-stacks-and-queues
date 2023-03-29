@@ -117,6 +117,10 @@ class Queue {
   getLast() {
     return this.last;
   }
+
+  isEmpty() {
+    return this.size === 0;
+  }
 }
 
 const numStack = new Stack();
