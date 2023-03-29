@@ -98,6 +98,7 @@ class Queue {
   dequeue() { 
     let item = this.first;
     this.first = this.first.next;
+    this.size--;
     return item.data;
   }
 }
