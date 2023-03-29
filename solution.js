@@ -59,6 +59,16 @@ class Stack {
     return min;
   }
 
+  sort() {
+    // let min = this.findMin();
+    // let stackLength = this.size();
+    // const tmpStack = new Stack()
+
+    // while (this) {
+    //   if (node.data) {}
+    // }
+  }
+
 }
 
 class Queue {
@@ -67,6 +77,21 @@ class Queue {
     this.last = null;
     this.size = 0;
     this.max = value;
+  }
+
+  count() {
+    return this.size;
+  }
+
+  enqueue(data) {
+    let newItem = new Node(data)
+    if (!this.first) {
+      this.first = newItem;
+      this.last = newItem;
+    } else {
+      this.last.next = newItem;
+      this.last = newItem;
+    }
   }
 }
 
