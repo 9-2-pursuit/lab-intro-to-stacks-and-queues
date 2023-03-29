@@ -57,8 +57,40 @@ class Queue {
   constructor() {
     this.first = null;
     this.last = null;
-    this.size = null;
+    this.size = 0;
     this.max = null;
+  }
+
+  count() {
+    return this.size;
+  }
+  enqueue(data) {
+    const node = new Node(data);
+    if (!this.first) {
+      this.first = node;
+    }
+    if (!this.last) {
+      this.last = node;
+    } else if (this.last) {
+      this.last.next = node;
+      this.last = node;
+    }
+    this.size++;
+  }
+  dequeue() {
+    const copy = this.first;
+    this.first = this.first.next;
+    this.size--;
+    return copy.data;
+  }
+  getLast() {
+    return this.last;
+  }
+  isEmpty() {
+    return this.size === 0;
+  }
+  peek() {
+    return this.first;
   }
 }
 
