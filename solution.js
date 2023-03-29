@@ -58,13 +58,14 @@ class Queue {
     this.first = null;
     this.last = null;
     this.size = 0;
-    this.max = null;
+    this.max = -Infinity;
   }
 
   count() {
     return this.size;
   }
   enqueue(data) {
+    if (data > this.max) this.max = data;
     const node = new Node(data);
     if (!this.first) {
       this.first = node;
@@ -80,6 +81,9 @@ class Queue {
   dequeue() {
     const copy = this.first;
     this.first = this.first.next;
+    if (copy.data == this.max) {
+      this.findMax();
+    }
     this.size--;
     return copy.data;
   }
@@ -91,6 +95,18 @@ class Queue {
   }
   peek() {
     return this.first;
+  }
+  findMax() {
+    let cur = this.first;
+    let max = -Infinity;
+    while (cur) {
+      if (cur.data > max) {
+        max = cur.data;
+      }
+      cur = cur.next;
+    }
+    this.max = max;
+    return max;
   }
 }
 
