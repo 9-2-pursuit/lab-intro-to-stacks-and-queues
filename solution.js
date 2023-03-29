@@ -47,6 +47,18 @@ class Stack {
     return this.top;
   }
 
+  findMin() {
+    let min = this.top.data;
+    let node = this.top;
+    while (node) {
+      if (node.data < min) {
+        min = node.data;
+      }
+      node = node.next;
+    }
+    return min;
+  }
+
 }
 
 class Queue {
