@@ -113,6 +113,10 @@ class Queue {
     }
     return max;
   }
+
+  getLast() {
+    return this.last;
+  }
 }
 
 const numStack = new Stack();
