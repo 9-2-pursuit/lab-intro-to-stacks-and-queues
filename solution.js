@@ -92,6 +92,13 @@ class Queue {
       this.last.next = newItem;
       this.last = newItem;
     }
+    this.size++;
+  }
+
+  dequeue() { 
+    let item = this.first;
+    this.first = this.first.next;
+    return item.data;
   }
 }
 
