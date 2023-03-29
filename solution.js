@@ -101,6 +101,18 @@ class Queue {
     this.size--;
     return item.data;
   }
+
+  findMax() {
+    let node = this.first;
+    let max = this.first.data;
+    while (node) {
+      if (node.data > max) {
+        max = node.data;
+      }
+      node = node.next;
+    }
+    return max;
+  }
 }
 
 const numStack = new Stack();
