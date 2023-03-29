@@ -42,6 +42,11 @@ class Stack {
   isEmpty() {
     return this.top === null;
   }
+
+  peek() {
+    return this.top;
+  }
+
 }
 
 class Queue {
