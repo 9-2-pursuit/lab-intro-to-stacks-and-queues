@@ -38,6 +38,10 @@ class Stack {
     this.top = popped.next;
     return popped;
   }
+
+  isEmpty() {
+    return this.top === null;
+  }
 }
 
 class Queue {
@@ -48,6 +52,14 @@ class Queue {
     this.max = value;
   }
 }
+
+const numStack = new Stack();
+console.log(numStack.isEmpty());
+for (let i = 0; i < nums.length; i++) {
+  numStack.push(nums[i]);
+}
+console.log(inspect(numStack));
+console.log(numStack.isEmpty());
 
 module.exports = {
   Node,
