@@ -70,6 +70,10 @@ class Stack {
 
     while (cur) {
       console.log("before swap", prev.data, cur.data);
+      /* anytime prev item is greater than cur item in the stack
+            sorting is not finished 
+            swap prev and cur item data 
+      */
       if (prev.data > cur.data) {
         sortingFinished = false;
         let copyPrevData = prev.data;
@@ -78,8 +82,17 @@ class Stack {
       }
       console.log("after swap,", prev.data, cur.data);
       console.log("=".repeat(30));
+      // slide windows, move on to the next item
       prev = cur;
       cur = cur.next;
+      /* at the end of the stack, if sorting is not finished, 
+           start again from the top of stack 
+           reset sortingFinised to true 
+           if nothing else is left to be swapped in the next iteration, 
+           this will end the loop 
+           else only if one swapping happens, it will continue the loop to the botoom and 
+           to the next iteration 
+      */
       if (cur == null && !sortingFinished) {
         cur = this.top.next;
         prev = this.top;
@@ -154,6 +167,7 @@ for (let num of numbers) {
   numStack.push(num);
 }
 console.log(numStack.sort());
+console.log(inspect);
 module.exports = {
   Node,
   Queue,
