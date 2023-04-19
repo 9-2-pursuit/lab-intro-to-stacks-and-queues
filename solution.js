@@ -59,49 +59,6 @@ class Stack {
   size() {
     return this.count;
   }
-
-  sort() {
-    this.top = this.mergeSort(this.top);
-  }
-
-  mergeSort(head) {
-    if (!head || !head.next) {
-      return head;
-    }
-    let mid = this.getMiddle(head);
-    let nextToMid = mid.next;
-    mid.next = null;
-    let left = this.mergeSort(head);
-    let right = this.mergeSort(nextToMid);
-    return this.merge(left, right);
-  }
-
-  merge(left, right) {
-    let dummy = new Node(null);
-    let tail = dummy;
-    while (left && right) {
-      if (left.data < right.data) {
-        tail.next = left;
-        left = left.next;
-      } else {
-        tail.next = right;
-        right = right.next;
-      }
-      tail = tail.next;
-    }
-    tail.next = left || right;
-    return dummy.next;
-  }
-
-  getMiddle(head) {
-    let slow = head;
-    let fast = head;
-    while (fast.next && fast.next.next) {
-      slow = slow.next;
-      fast = fast.next.next;
-    }
-    return slow;
-  }
 }
 
 class Queue {
