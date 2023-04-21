@@ -35,9 +35,6 @@ class Stack {
   }
 
   findMin() {
-    if (this.isEmpty()) {
-      return null;
-    }
     let current = this.top;
     let min = current.data;
     while (current) {
@@ -50,14 +47,30 @@ class Stack {
   }
 
   peek() {
-    if (this.isEmpty()) {
-      return null;
-    }
     return this.top;
   }
 
   size() {
     return this.count;
+  }
+
+  sort() {
+    let array = [new Node(this.top.data)];
+    let curr = this.top;
+    for (let i = 0; i <= this.size() - 1; i++) {
+      curr = curr?.next;
+      array.push(curr);
+    }
+    array = array.map((el) => el?.data);
+    array = array.sort();
+
+    for (let i = array.length; i >= 0; i--) {
+      this.pop();
+      if (!!array[i]) {
+        this.push(array[i]);
+        console.log(this);
+      }
+    }
   }
 }
 
@@ -88,9 +101,6 @@ class Queue {
   }
 
   dequeue() {
-    if (this.isEmpty()) {
-      return null;
-    }
     const data = this.first.data;
     this.first = this.first.next;
     this.size--;
@@ -115,10 +125,6 @@ class Queue {
   }
 
   findMax() {
-    if (this.isEmpty()) {
-      return null;
-    }
-
     let currentNode = this.first;
     let max = currentNode.data;
 
@@ -133,17 +139,10 @@ class Queue {
   }
 
   getLast() {
-    if (this.isEmpty()) {
-      return null;
-    }
     return this.last;
   }
 
   peek() {
-    if (this.first === null) {
-      return null;
-    }
-
     return this.first;
   }
 }
